@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReferralController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,8 +20,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Frontend routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/referrals/create', [ReferralController::class, 'create'])->name('referrals.create');
+    Route::post('/referrals', [ReferralController::class, 'store'])->name('referrals.store');
+});
 
-use App\Http\Controllers\Auth\RegisteredUserController;
+
+
 
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
 Route::post('/register', [RegisteredUserController::class, 'store']);

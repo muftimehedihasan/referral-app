@@ -42,7 +42,7 @@
                     </p>
 
                     <li class="list-group-item mt-3">
-                        <a href="mailto:{{ Auth::user()->referral_link }}"
+                        <a href="{{route('referrals.create')}}"
                         class="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-2 px-4 rounded-lg shadow-lg hover:from-pink-500 hover:to-purple-500 transition duration-300 ease-in-out transform hover:scale-105">
                         Refer Your Friends
                         </a>
