@@ -10,6 +10,6 @@ class AdminController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('backend.admin.referrals', compact('users'));
+        return view('backend.admin.users', compact('users'));
     }
 }

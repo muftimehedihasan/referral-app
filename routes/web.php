@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
 
 // Backend routes
 Route::middleware([AdminMiddleware::class])->group(function () {
-    Route::get('/admin/referrals', [AdminController::class, 'index'])->name('admin.referrals');
+    Route::get('/admin/users', [AdminController::class, 'index'])->name('admin.users');
 });
 
 
