@@ -2,23 +2,41 @@
     <div class="py-12 flex justify-center">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-16 space-y-6 bg-slate-500 p-6 rounded">
 
-<h2>You can shere via copy link</h2>
+
+    <!-- Error Message -->
+        @if ($errors->any())
+            <div class="bg-red-500 text-white p-4 rounded mb-4">
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
+
+    {{-- sucsess message --}}
+    @if (session('success'))
+        <div class="bg-green-500 text-white p-4 rounded mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
+
+
+{{-- <h2>You can shere via copy link</h2> --}}
             <!-- Copy Referral Link Section -->
             <div lass="flex items-center space-x-3">
                 <div class="relative w-96 ">
                     <!-- Styled referral link similar to input -->
-                    <input type="text" id="referralLink" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ Auth::user()->referral_link }}" readonly>
+                    {{-- <input type="text" id="referralLink" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ Auth::user()->referral_link }}" readonly> --}}
 
                     <!-- Button to Copy the Link -->
-                    <button type="button" class="btn btn-primary bg-indigo-500 py-2 px-4 rounded absolute right-0 top-0 bottom-0 m-2" onclick="copyReferralLink()">
+                    {{-- <button type="button" class="btn btn-primary bg-indigo-500 py-2 px-4 rounded absolute right-0 top-0 bottom-0 m-2" onclick="copyReferralLink()">
                         Copy Link
-                    </button>
+                    </button> --}}
                 </div>
             </div>
 
             <!-- Send Invite Form -->
             <div>
-                <h2>You can shere via email</h2>
+                <h2 class="text-lg font-medium text-gray-900 p-4 ">Shere your invite via email</h2>
                 <form action="{{ route('referrals.store') }}" method="POST" class="flex items-center space-x-3">
                     @csrf
                     <div class="relative w-96">

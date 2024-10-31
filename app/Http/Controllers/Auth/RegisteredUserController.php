@@ -53,7 +53,7 @@ class RegisteredUserController extends Controller
 
         if ($referrer) {
             // Notify referrer
-            Notification::send($referrer, new ReferrerBonus($user));
+           // Notification::send($referrer, new ReferrerBonus($user));
         }
 
         return redirect()->route('dashboard');

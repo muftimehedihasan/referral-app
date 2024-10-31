@@ -22,21 +22,32 @@ class User extends Authenticatable
 
      ////= ================================
 
-     protected $fillable = [
-        'referrer_id', 'name', 'email', 'password', 'username', 'referral_token',
+    //  protected $fillable = [
+    //     'referrer_id', 'name', 'email', 'password', 'username', 'referral_token',
+    // ];
+
+    protected $fillable = [
+        'name', 'email', 'password', 'username', 'referral_token',
     ];
+
 
     protected $appends = ['referral_link'];
 
-    public function referrer()
-    {
-        return $this->belongsTo(User::class, 'referrer_id', 'id');
-    }
 
     public function referrals()
     {
-        return $this->hasMany(User::class, 'referrer_id', 'id');
+        // return $this->hasMany( 'referrer_id');
+        return $this->hasMany(Referral::class, 'referrer_id');
     }
+
+
+    // Method to count the total referrals
+    public function referralCount()
+    {
+        return $this->referrals()->count();
+    }
+
+
 
     public function getReferralLinkAttribute()
     {

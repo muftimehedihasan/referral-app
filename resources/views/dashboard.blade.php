@@ -33,8 +33,9 @@
                     <li class="list-group-item">Email: {{ Auth::user()->email }}</li> --}}
                     {{-- <li class="list-group-item">Referral link: {{ Auth::user()->referral_link }}</li> --}}
 
-                    <li class="list-group-item">Referrer: {{ Auth::user()->referrer->name ?? 'Not Specified' }}</li>
-                    <li class="list-group-item">Your Referred Users: {{ Auth::user()->referrals->count() }}</li>
+                    {{-- <li class="list-group-item">Referrer: {{ Auth::user()->referrer->name ?? 'Not Specified' }}</li> --}}
+                    <li class="list-group-item">Your invites: {{ Auth::user()->referrals->count() }}</li>
+                    {{-- <li class="list-group-item">Your Referred Users: {{ Auth::user()->referrals->count() }}</li> --}}
 
                     <p class="mt-1 text-md text-gray-600">
                         {{ __("Shere your referral link and earn bonus") }}
